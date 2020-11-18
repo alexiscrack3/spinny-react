@@ -1,15 +1,21 @@
-import Navbar from "react-bootstrap/Navbar";
+import Switch from "react-bootstrap/esm/Switch";
+
+import { BrowserRouter, Route } from "react-router-dom";
 import "./App.css";
+import Layout from "./components/layout/layout";
 import Home from "./components/home/home";
+import PlayersTable from "./components/players/PlayersTable";
 
 function App() {
   return (
-    <div className="App">
-      <Navbar bg="light">
-        <Navbar.Brand href="#home">Spinny</Navbar.Brand>
-      </Navbar>
-      <Home />
-    </div>
+    <BrowserRouter>
+      <Layout>
+        <Switch className="App">
+          <Route exact path="/" component={Home} />
+          <Route exact path="/players" component={PlayersTable} />
+        </Switch>
+      </Layout>
+    </BrowserRouter>
   );
 }
 

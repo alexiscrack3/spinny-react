@@ -3,7 +3,7 @@ import "./home.css";
 
 class Home extends React.Component {
   render() {
-    return "This is the home page";
+    return "Home page";
   }
 }
 
