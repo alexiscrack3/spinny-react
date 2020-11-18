@@ -1,7 +1,9 @@
 import React from "react";
 import Table from "react-bootstrap/Table";
-import "./PlayersTable.css";
+import "./PlayersList.css";
 import playersService from "./PlayersService";
+import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 class Players extends React.Component {
   state = {
@@ -37,7 +39,7 @@ class Players extends React.Component {
     }
     return (
       <React.Fragment>
-        <Table striped bordered hover>
+        <Table striped bordered hover className="players-list">
           <thead>
             <tr>
               <th>#</th>
@@ -45,6 +47,7 @@ class Players extends React.Component {
               <th>Name</th>
               <th>Email</th>
               <th>Rating</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -58,6 +61,11 @@ class Players extends React.Component {
                   </td>
                   <td>{player.email}</td>
                   <td>{player.rating}</td>
+                  <td>
+                    <Link to={`/players/${player._id}`}>
+                      <Button variant="primary">View</Button>
+                    </Link>
+                  </td>
                 </tr>
               );
             })}

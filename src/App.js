@@ -3,7 +3,8 @@ import "./App.css";
 import Layout from "./components/layout/layout";
 import Home from "./pages/home/home";
 import NotFound from "./pages/not-found/NotFound";
-import PlayersTable from "./components/players/PlayersTable";
+import Players from "./pages/players/Players";
+import PlayerDetails from "./components/players/PlayerDetails";
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
       <Layout>
         <Switch className="App">
           <Route exact path="/" component={Home} />
-          <Route exact path="/players" component={PlayersTable} />
+          <Route exact path="/players" component={Players} />
+          <Route exact path="/players/:id" component={PlayerDetails} />
           <Route component={NotFound} />
         </Switch>
       </Layout>
