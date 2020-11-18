@@ -1,13 +1,14 @@
-import logo from "./logo.svg";
+import Navbar from "react-bootstrap/Navbar";
 import "./App.css";
-import Players from "./components/players/Players";
+import Home from "./components/home/home";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <Players />
-      </header>
+      <Navbar bg="light">
+        <Navbar.Brand href="#home">Spinny</Navbar.Brand>
+      </Navbar>
+      <Home />
     </div>
   );
 }
