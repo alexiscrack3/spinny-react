@@ -25,6 +25,9 @@ const playersService = {
   async getPlayers() {
     return execute("players");
   },
+  async getPlayerById(id) {
+    return execute(`players/${id}`);
+  },
 };
 
 export default playersService;
