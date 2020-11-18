@@ -1,7 +1,7 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import "./App.css";
 import Layout from "./components/layout/layout";
-import Home from "./components/home/home";
+import Home from "./pages/home/home";
 import NotFound from "./pages/not-found/NotFound";
 import PlayersTable from "./components/players/PlayersTable";
 
