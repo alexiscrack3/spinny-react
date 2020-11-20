@@ -39,7 +39,7 @@ class Players extends React.Component {
     }
     return (
       <React.Fragment>
-        <Table striped bordered hover className="players-list">
+        <Table striped bordered hover className="players-list mt-3 mx-auto">
           <thead>
             <tr>
               <th>#</th>
