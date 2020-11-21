@@ -1,9 +1,8 @@
 import React from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import "./layout.css";
+import Container from "react-bootstrap/Container";
+import "./Llayout.css";
 import logo from "../../logo.svg";
 
 class Layout extends React.Component {
@@ -25,7 +24,7 @@ class Layout extends React.Component {
             <Nav.Link href="/players">Players</Nav.Link>
           </Nav>
         </Navbar>
-        {this.props.children}
+        <Container fluid>{this.props.children}</Container>
       </React.Fragment>
     );
   }
