@@ -1,6 +1,6 @@
 import React from "react";
 import Nav from "react-bootstrap/Nav";
-import playersService from "../../services/pplayersService";
+import playersService from "../../services/playersService";
 import tokenStorage from "../../helpers/tokenStorage";
 import "./LoggedInBox.css";
 

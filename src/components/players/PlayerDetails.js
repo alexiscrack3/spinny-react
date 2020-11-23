@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import "./PlayerDetails.css";
-import playersService from "../../services/pplayersService";
+import playersService from "../../services/playersService";
 
 class PlayerDetails extends React.Component {
   state = {
