@@ -1,4 +1,5 @@
 import React from "react";
+import Redirect from "react-router-dom/Redirect";
 import Form from "react-bootstrap/Form";
 import Spinner from "react-bootstrap/Spinner";
 import Button from "react-bootstrap/Button";
@@ -9,6 +10,7 @@ import "./LoginBox.css";
 class LoginBox extends React.Component {
   state = {
     loading: false,
+    redirectToReferrer: false,
     input: {
       email: "",
       password: "",
@@ -73,6 +75,7 @@ class LoginBox extends React.Component {
       }
       this.setState({
         loading: false,
+        redirectToReferrer: true,
       });
     } catch (error) {
       this.setState({
@@ -83,6 +86,9 @@ class LoginBox extends React.Component {
   };
 
   render() {
+    if (this.state.redirectToReferrer) {
+      return <Redirect to="/" />;
+    }
     const spinner = (
       <React.Fragment>
         <Spinner
