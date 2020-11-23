@@ -1,7 +1,7 @@
 import React from "react";
 import Table from "react-bootstrap/Table";
 import "./PlayersList.css";
-import playersService from "./PlayersService";
+import playersService from "../../services/pplayersService";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 

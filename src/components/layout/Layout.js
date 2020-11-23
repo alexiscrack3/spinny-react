@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
+import LoggedInBox from "../login/LoggedInBox";
 import "./Layout.css";
 import logo from "../../logo.svg";
 
@@ -23,6 +24,9 @@ class Layout extends React.Component {
           <Nav>
             <Nav.Link href="/players">Players</Nav.Link>
           </Nav>
+          <Navbar.Collapse className="justify-content-end">
+            <LoggedInBox />
+          </Navbar.Collapse>
         </Navbar>
         <Container fluid>{this.props.children}</Container>
       </React.Fragment>
