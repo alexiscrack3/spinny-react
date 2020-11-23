@@ -1,9 +1,9 @@
 import React from "react";
-import Table from "react-bootstrap/Table";
-import "./PlayersList.css";
-import playersService from "../../services/playersService";
-import { Button } from "react-bootstrap";
+import { Table, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import PageLoader from "../loader/PageLoder";
+import playersService from "../../services/playersService";
+import "./PlayersList.css";
 
 class Players extends React.Component {
   state = {
@@ -35,7 +35,7 @@ class Players extends React.Component {
 
   render() {
     if (this.state.loading === true) {
-      return "Loading...";
+      return <PageLoader />;
     }
     return (
       <React.Fragment>
