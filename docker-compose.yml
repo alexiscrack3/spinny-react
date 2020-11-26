@@ -1,0 +1,46 @@
+version: "3"
+
+services:
+    api:
+        image: alexiscrack3/spinny-api:latest
+        container_name: api
+        env_file: .env
+        environment:
+            MONGO_HOSTNAME: db
+            MONGO_PORT: $MONGO_PORT
+            MONGO_DB: $MONGO_DB
+        depends_on:
+            - db
+        ports:
+            - "3000:3000"
+            # - "3000-3010:3000"
+        networks:
+            - custom-network
+    db:
+        image: mongo
+        container_name: db
+        ports:
+            - "27017:27017"
+        networks:
+            - custom-network
+        volumes:
+            - dbdata:/data/db
+    web:
+        build: .
+        container_name: web
+        environment:
+            REACT_APP_DOMAIN: api
+            REACT_APP_PORT: 3000
+        depends_on:
+            - api
+        ports:
+            - "80:8080"
+        networks:
+            - custom-network
+
+networks:
+    custom-network:
+        driver: bridge
+
+volumes:
+  dbdata:
