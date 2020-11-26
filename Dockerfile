@@ -1,14 +1,25 @@
-FROM node:10
+FROM node:10 as build
 
-RUN apt update && apt install -y vim
+# RUN apt update && apt install -y vim
 
-WORKDIR /usr/src
+WORKDIR /app
 
-COPY ["package.json", "package-lock.json", "/usr/src/"]
+COPY ["package.json", "package-lock.json", "/app/"]
+
 RUN npm install --only=prod
 
-COPY [".", "/usr/src/"]
+COPY [".", "/app/"]
 
-EXPOSE 8080
+# EXPOSE 8080
 
-CMD ["npm", "start"]
+RUN ["npm", "run", "build"]
+
+FROM nginx:stable-alpine
+
+COPY --from=build /app/build/ /bin/www
+
+COPY --from=build /app/nginx/nginx.conf /etc/nginx/conf.d/default.conf
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
