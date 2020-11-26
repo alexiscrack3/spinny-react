@@ -1,6 +1,6 @@
 import tokenStorage from "../helpers/tokenStorage";
 
-const BASE_URL = process.env.API_URL || "http://localhost:3000/";
+const BASE_URL = `http://${process.env.REACT_APP_DOMAIN}:${process.env.REACT_APP_PORT}/` || "http://localhost:3000/";
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const randomNumber = (min = 0, max = 1) =>

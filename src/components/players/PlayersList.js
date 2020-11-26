@@ -9,7 +9,7 @@ class Players extends React.Component {
   state = {
     loading: true,
     error: null,
-    data: undefined,
+    data: [],
   };
 
   componentDidMount() {
