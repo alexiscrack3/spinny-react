@@ -1,24 +1,20 @@
 FROM node:12 as build
 
-# RUN apt update && apt install -y vim
+WORKDIR /usr/src
 
-WORKDIR /app
-
-COPY ["package.json", "package-lock.json", "/app/"]
+COPY ["package.json", "package-lock.json", "/usr/src/"]
 
 RUN npm install --only=prod
 
-COPY [".", "/app/"]
+COPY [".", "/usr/src/"]
 
-# EXPOSE 8080
-
-RUN ["npm", "run", "build"]
+RUN npm run build
 
 FROM nginx:stable-alpine
 
-COPY --from=build /app/build/ /bin/www
+COPY --from=build /usr/src/build /bin/www
 
-COPY --from=build /app/nginx/nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=build /usr/src/nginx/nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
 
