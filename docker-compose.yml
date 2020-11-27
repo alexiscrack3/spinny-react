@@ -26,11 +26,7 @@ services:
         volumes:
             - dbdata:/data/db
     web:
-        build: .
         container_name: web
-        environment:
-            REACT_APP_DOMAIN: api
-            REACT_APP_PORT: 3000
         depends_on:
             - api
         ports:

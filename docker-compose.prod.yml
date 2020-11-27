@@ -1,0 +1,5 @@
+version: "3"
+
+services:
+    web:
+        image: alexiscrack3/spinny-react:latest
