@@ -14,7 +14,7 @@ FROM nginx:stable-alpine
 
 COPY --from=build /usr/src/build /var/www
 
-COPY --from=build /usr/src/nginx/nginx.conf /etc/nginx/sites-available/default
+COPY --from=build /usr/src/nginx/nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
 
