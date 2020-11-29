@@ -12,9 +12,9 @@ RUN npm run build
 
 FROM nginx:stable-alpine
 
-COPY --from=build /usr/src/build /bin/www
+COPY --from=build /usr/src/build /var/www
 
-COPY --from=build /usr/src/nginx/nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=build /usr/src/nginx/nginx.conf /etc/nginx/sites-available/default
 
 EXPOSE 80
 
