@@ -27,6 +27,9 @@ services:
             - dbdata:/data/db
     web:
         container_name: web
+        env_file: .env
+        environment:
+            REACT_APP_BASE_URL: $REACT_APP_BASE_URL
         depends_on:
             - api
         ports:
