@@ -24,7 +24,7 @@ services:
         networks:
             - spinny-network
         volumes:
-            - dbdata:/data/db
+            - spinny-volume:/data/db
     web:
         container_name: web
         env_file: .env
@@ -42,4 +42,4 @@ networks:
         driver: bridge
 
 volumes:
-  dbdata:
+  spinny-volume:
