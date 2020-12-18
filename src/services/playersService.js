@@ -2,13 +2,13 @@ import execute from "./execute";
 
 const playersService = {
   async getPlayers() {
-    return execute("players");
+    return execute("/players");
   },
   async getPlayerById(id) {
-    return execute(`players/${id}`);
+    return execute(`/players/${id}`);
   },
   async getProfile() {
-    return execute("players/me");
+    return execute("/players/me");
   },
 };
 
