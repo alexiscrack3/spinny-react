@@ -8,6 +8,18 @@ RUN npm install --only=prod
 
 COPY [".", "/usr/src/"]
 
-EXPOSE 8080
+RUN npm run build
 
-CMD ["npm", "start"]
+FROM nginx:stable-alpine
+
+# Remove default Nginx website
+RUN rm -rf /usr/share/nginx/html/*
+
+COPY --from=build /usr/src/build /usr/share/nginx/html
+
+# Use bind mount in docker-compose.yml instead of copying the configuration file
+# COPY --from=build /usr/src/nginx/nginx.conf /etc/nginx/conf.d/default.conf
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]

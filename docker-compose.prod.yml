@@ -1,23 +1,12 @@
 version: "3"
 
 services:
-    nginx:
+    web:
         image: alexiscrack3/spinny-react:latest
-        container_name: nginx
-        env_file: .env
-        environment:
-            REACT_APP_BASE_URL: $REACT_APP_BASE_URL
-        depends_on:
-            - api
-        ports:
-            - "80:80"
         volumes:
             - web-root:/usr/share/nginx/html
-            - ./nginx/nginx-conf:/etc/nginx/conf.d
             - certbot-etc:/etc/letsencrypt
             - certbot-var:/var/lib/letsencrypt
-        networks:
-            - spinny-network
     certbot:
         image: certbot/certbot
         container_name: certbot
@@ -26,15 +15,15 @@ services:
             - certbot-var:/var/lib/letsencrypt
             - web-root:/usr/share/nginx/html
         depends_on:
-            - nginx
+            - web
         command: certonly --webroot --webroot-path=/usr/share/nginx/html --email alexis.oc3@gmail.com --agree-tos --no-eff-email --force-renewal -d alexisortega.dev  -d www.alexisortega.dev
 
 volumes:
-  certbot-etc:
-  certbot-var:
-  web-root:
-    driver: local
-    driver_opts:
-      type: none
-      device: /home/alexis/spinny-react/public/
-      o: bind
+    certbot-etc:
+    certbot-var:
+    web-root:
+      driver: local
+      driver_opts:
+        type: none
+        device: /home/alexis/spinny-react/public/
+        o: bind

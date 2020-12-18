@@ -5,14 +5,3 @@ services:
         build:
             context: .
             dockerfile: Dockerfile
-        container_name: web
-        env_file: .env
-        environment:
-            REACT_APP_BASE_URL: $REACT_APP_BASE_URL
-            REACT_APP_PORT: $PORT
-        depends_on:
-            - api
-        ports:
-            - "80:8080"
-        networks:
-            - spinny-network

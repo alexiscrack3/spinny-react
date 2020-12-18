@@ -23,10 +23,23 @@ services:
             - spinny-network
         volumes:
             - spinny-volume:/data/db
+    web:
+        container_name: web
+        env_file: .env
+        environment:
+            REACT_APP_BASE_URL: $REACT_APP_BASE_URL
+        depends_on:
+            - api
+        ports:
+            - "80:80"
+        networks:
+            - spinny-network
+        volumes:
+            - ./nginx:/etc/nginx/conf.d
 
 networks:
     spinny-network:
         driver: bridge
 
 volumes:
-  spinny-volume:
+    spinny-volume:
