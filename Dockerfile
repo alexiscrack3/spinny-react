@@ -13,9 +13,10 @@ RUN npm run build
 FROM nginx:stable-alpine
 
 # Remove default Nginx website
-RUN rm -rf /usr/share/nginx/html/*
+# RUN rm -rf /usr/share/nginx/html/*
+RUN rm -rf /var/www/html
 
-COPY --from=build /usr/src/build /usr/share/nginx/html
+COPY --from=build /usr/src/build /var/www/html
 
 # Use bind mount in docker-compose.yml instead of copying the configuration file
 # COPY --from=build /usr/src/nginx/nginx.conf /etc/nginx/conf.d/default.conf

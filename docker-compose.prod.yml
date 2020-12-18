@@ -4,7 +4,7 @@ services:
     web:
         image: alexiscrack3/spinny-react:latest
         volumes:
-            - web-root:/usr/share/nginx/html
+            - web-root:/var/www/html
             - certbot-etc:/etc/letsencrypt
             - certbot-var:/var/lib/letsencrypt
     certbot:
@@ -13,10 +13,10 @@ services:
         volumes:
             - certbot-etc:/etc/letsencrypt
             - certbot-var:/var/lib/letsencrypt
-            - web-root:/usr/share/nginx/html
+            - web-root:/var/www/html
         depends_on:
             - web
-        command: certonly --webroot --webroot-path=/usr/share/nginx/html --email alexis.oc3@gmail.com --agree-tos --no-eff-email --force-renewal -d alexisortega.dev  -d www.alexisortega.dev
+        command: certonly --webroot --webroot-path=/var/www/html --email alexis.oc3@gmail.com --agree-tos --no-eff-email --force-renewal -d alexisortega.dev  -d www.alexisortega.dev
 
 volumes:
     certbot-etc:
