@@ -14,7 +14,7 @@ FROM nginx:stable-alpine
 
 # Remove default Nginx website
 # RUN rm -rf /usr/share/nginx/html/*
-RUN rm -rf /var/www/html
+RUN rm -rf /var/www/html/*
 
 COPY --from=build /usr/src/build /var/www/html
 
